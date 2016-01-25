@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Library <%=" | #{@page_title}" if @page_title%></title>
+  <%= stylesheet_link_tag('application',:media=>'all')%>
+  <%= javascript_include_tag('application') %>
+</head>
+<body>
+<div id="main">
+<% unless flash[:notice].blank? %>
+	<%= flash[:notice] %>
+<% end %>
+	<div id="head"></div>
+	<div id="navigation"></div>
+	<div id="content">
+		<%= yield %>
+	</div>
+	<div class="clear" ></div>
+	<div id="footer"></div>
+</div>
+</body>
+</html>

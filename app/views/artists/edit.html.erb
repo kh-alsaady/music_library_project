@@ -1,0 +1,14 @@
+<%@page_title="Edit"%>
+<b><%= link_to("<< Back to artists list",artists_path)%></b><br/>
+<h1>Editing artist</h1>
+<%= link_to('Show',artist_path(@artist.id)) %> |
+<%= link_to('Delete',delete_artist_path(@artist.id)) %>
+<br/><br/>
+<%= form_for(@artist) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Update')%>
+<% end -%>
+
+
+

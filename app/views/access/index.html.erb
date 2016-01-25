@@ -1,0 +1,10 @@
+<h1>Music Library Adminstration</h1>
+<h2>Logged in as : <b><%=session[:username]%></b></h2>
+<ul>
+	<li><%=link_to("Manage Albums",albums_path)%>
+	<li><%=link_to("Manage Artists",artists_path)%>
+	<li><%=link_to("Manage Features",features_path)%>
+	<li><%=link_to("Manage Customers",customers_path)%>
+	<li><%=link_to("Manage Users",users_path)%>	
+	<li><%=link_to("Logout",:action => 'logout')%>	
+</ul>

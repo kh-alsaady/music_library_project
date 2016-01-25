@@ -1,0 +1,40 @@
+<table  class='table'>
+	<tr class="tbl_head_footer">
+		<th>image</th>
+		<th>Album</th>
+		<th>Artist</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>subtotal</th>
+	</tr>
+	<% total_price = 0.0 %>
+	<% for item in order.line_items do %>
+		<tr style="background:<%=zebra_style%>;">
+				<td rowspan="2">
+					<%=image_tag(item.album.image_path,:size=>'50x50',
+						:alt=>'image not found')%>
+				</td>
+				<td>
+					<b><%=item.album.title%></b><br/>
+				</td>
+				<td>
+					<b><%=item.album.artist.name if item.album.artist%></b>
+				</td>
+				<td>
+					<b><%=item.quantity %></b>
+				</td>
+				<td>
+					<%=number_to_currency(item.album.price)%><br/>				
+				</td>
+				<td>
+					<%=number_to_currency((item.album.price * item.quantity))%><br/>				
+				</td>	
+				<% total_price += (item.album.price * item.quantity) %>			
+		</tr>		
+		<tr></tr>
+	<% end %>
+	<tr>
+		<td colspan="5">Total</td>
+		<td><%= number_to_currency(total_price)%></td>
+	</tr>
+</table>

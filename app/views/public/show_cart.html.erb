@@ -1,0 +1,49 @@
+<%@page_title="Show Cart"%>
+<h1 align="center">Music Library Store</h1>
+<h2 align="center">Your shopping Cart :</h2>
+<% if @cart.items.any? %>
+	<table align="center" class='table'>
+		<tr class="tbl_head_footer">
+		<th>image</th>
+		<th>Album</th>
+		<th>Artist</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th></th>
+		</tr>
+	<% for item in @cart.items do %>
+		<!-- zebra_style method in application helper-->
+		<tr style="background:<%=zebra_style%>;">
+			<td rowspan="2">
+				<%=image_tag(item.album.image_path,:size=>'50x50',:alt=>'image not found')%>
+			</td>
+			<td>
+				<b><%=item.album.title%></b><br/>
+			</td>
+			<td>
+				<b><%=item.album.artist.name if item.album.artist%></b>
+			</td>
+			<td>
+				<b><%=item.quantity %></b>
+			</td>
+			<td>
+				<%=number_to_currency(item.album.price)%><br/>				
+			</td>
+			<td>
+				<%=link_to('Remove from Cart',:action=>'remove_from_cart',
+					:id=>item.album_id)%> 
+			</td>			
+		</tr>		
+		<tr></tr>
+	<% end %>
+	</table>
+<% else %>
+<div align="center">
+	Your shopping cart is empty<br/><br/>
+</div>
+<% end %>	
+<div align="center">	
+	<%=link_to('Continue shopping',:action=>'index')%> |
+	<%=link_to('Empty Cart',:action=>'empty_cart')%> |
+	<%=link_to('Checkout',:action=>'checkout') if @cart.items.any? %> 
+</div>

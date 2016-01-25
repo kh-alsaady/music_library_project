@@ -1,0 +1,14 @@
+<%@page_title="Edit"%>
+<b><%= link_to("<< Back to customers list",customers_path)%></b><br/>
+<h1>Editing customer</h1>
+<%= link_to('Show',customer_path(@customer.id)) %> |
+<%= link_to('Delete',delete_customer_path(@customer.id)) %>
+<br/><br/>
+<%= form_for(@customer) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Update')%>
+<% end -%>
+
+
+

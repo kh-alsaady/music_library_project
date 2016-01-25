@@ -1,0 +1,27 @@
+<%@page_title="Index"%>
+<%=link_to("<< Back to Menu",:controller => 'access')%>
+<h1>All Users</h1>
+<%= link_to('New User', new_user_path) %><br/><br/>
+<%if @users.count > 0 %>
+    <table class="table">
+      <tr class="tbl_head_footer">
+        <th>ID</th>
+        <th>Username</th>            
+        <th colspan="2">Actions</th>
+      </tr>
+      <% @users.each do |user| %>
+          <tr style="background:<%=zebra_style%>">      
+              <td><%=user.id%></td>
+              <td><%=user.username%></td>                            
+              <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+              <td><%= link_to('Delete', delete_user_path(user.id) ) %></td>
+          </tr>
+      <% end %>
+       <tr class="tbl_head_footer">
+        <td colspan="4"><b>users count <%=@users.count%></b></td>
+      </tr>
+    </table>
+<% else %>
+    <div>No users found.</div>
+<% end %>  
+

@@ -1,0 +1,9 @@
+<%@page_title="New"%>
+<b><%= link_to("<< Back to Users list",users_path)%></b><br/>
+<h1>New User</h1>
+<%= form_for(@user) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Create')%>
+<% end -%>
+

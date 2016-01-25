@@ -1,0 +1,14 @@
+<%@page_title="Edit"%>
+<b><%= link_to("<< Back to albums list",albums_path)%></b><br/>
+<h1>Editing album</h1>
+<%= link_to('Show',album_path(@album.id)) %> |
+<%= link_to('Delete',delete_album_path(@album.id)) %>
+<br/><br/>
+<%= form_for(@album) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Update')%>
+<% end -%>
+
+
+

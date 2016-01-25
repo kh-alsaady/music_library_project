@@ -1,0 +1,33 @@
+<%@page_title="Show"%>
+<b><%=link_to("<< Back to customers list",customers_path)%></b>
+<h1>Show customer</h1>
+<%= link_to 'Edit', edit_customer_path(@customer.id) %> |
+<%= link_to('Delete', delete_customer_path(@customer.id))%>
+<br/><br/> 
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<td><%=@customer.id%></td>
+	</tr>
+	<tr>
+		<th>First name</th>
+		<td><%=@customer.first_name%></td>
+	</tr>
+	<tr>
+		<th>Last name</th>
+		<td><%=@customer.last_name%></td>
+	</tr>	
+	<tr>
+		<th>Zip Code</th>
+		<td><%=@customer.zip_code%></td>
+	</tr>
+	<tr>
+		<th>Created at</th>
+		<td><%=@customer.created_at%></td>
+	</tr>
+	<tr>
+		<th>Updated at</th>
+		<td><%=@customer.updated_at%></td>
+	</tr>
+</table>
+

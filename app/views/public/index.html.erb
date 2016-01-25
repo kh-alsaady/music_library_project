@@ -1,0 +1,38 @@
+<%@page_title="Index"%>
+<h1 align="center">Music Library Store</h1>
+<% if @albums%>
+	<table align="center" class='table'>
+		<tr class="tbl_head_footer">
+		<th>image</th>
+		<th>Album</th>
+		<th>Artist</th>
+		<th>Price</th>
+		</tr>
+	<% for album in @albums do %>
+		<!-- zebra_style method in application helper-->
+		<tr style="background:<%=zebra_style%>;">
+			<td rowspan="2">
+				<%=image_tag(album.image_path,:size=>'100x100',:alt=>'image not found')%>
+			</td>
+			<td>
+				<b><%=album.title%></b><br/>
+				Released on  <%=album.release_date.strftime("%d %m %Y ")%>
+			</td>
+			<td>
+				<b><%=album.artist.name if album.artist%></b><br/>
+				Genre<%=album.genre%>
+			</td>
+			<td>
+				<%=number_to_currency(album.price)%><br/>
+				<%=link_to('Add to Cart',:action=>'add_to_cart',:id=>album.id)%>
+			</td>			
+		</tr>		
+		<tr></tr>
+	<% end %>
+	<tr class="tbl_head_footer">
+		<td colspan="4"><%=Time.now.strftime("%A %B %Y %I:%M %p")%></td>
+	</tr>
+	</table>
+<% else %>
+<div>no albums found.</div>
+<% end %>

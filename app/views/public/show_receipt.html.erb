@@ -1,0 +1,13 @@
+<%@page_title = "Show Receipt"%>
+<h1 align="center">Music Library Store</h1>
+<h2 align="center">Receipt :</h2>
+<p align="center">Date : <%= @order.created_at%></p>
+<p align="center">Customer : <%= @order.customer.name %></p>
+<p align="center">Zip code : <%= @order.customer.zip_code %></p>
+<p align="center">Has successfully purchased : </p>
+<div align="center">
+	<%= render(:partial=>'/application/order_details', :locals=>{:order => @order})%>
+</div>	<br/><br/>
+<div align="center">	
+	<%=link_to('Browse more albums',:action=>'index')%> 
+</div>

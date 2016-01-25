@@ -1,0 +1,6 @@
+<%@page_title="Show"%>
+<b><%=link_to("<< Back to orders list",orders_path(:customer_id => @order.customer.id))%></b>
+<h1>Order details</h1>
+<%= link_to('Delete', delete_order_path(@order.id))%>
+<br/><br/>
+<%= render(:partial => '/application/order_details', :locals =>{:order=>@order})%>

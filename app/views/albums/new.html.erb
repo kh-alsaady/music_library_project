@@ -1,0 +1,9 @@
+<%@page_title="New"%>
+<b><%= link_to("<< Back to albums list",albums_path)%></b><br/>
+<h1>New album</h1>
+<%= form_for(@album) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Create')%>
+<% end -%>
+

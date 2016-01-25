@@ -1,0 +1,8 @@
+<%@page_title="Delete"%>
+<b><%=link_to("<< Back to features list",features_path)%></b>
+<h1>Delete Feature</h1>
+<p>Are you sure you want to delete this record permanently ?</p><br/><br/>
+<%=form_for(:feature,:url=>feature_path(@feature.id),:html=>{:method=>:delete}) do %>
+<%=submit_tag("Delete")%>
+<% end %>
+

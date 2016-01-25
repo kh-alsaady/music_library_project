@@ -1,0 +1,9 @@
+<%@page_title="Delete"%>
+<b><%=link_to("<< Back to orders list",orders_path(:customer_id => 
+	@order.customer.id))%></b>
+<h1>Delete order</h1>
+<p>Are you sure you want to delete this record permanently ?</p><br/><br/>
+<%=form_for(:order,:url=>order_path(@order.id),:html=>{:method=>:delete}) do %>
+<%=submit_tag("Delete")%>
+<% end %>
+

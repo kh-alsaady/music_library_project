@@ -1,0 +1,14 @@
+<%@page_title="Edit"%>
+<b><%= link_to("<< Back to features list",features_path)%></b><br/>
+<h1>Editing feature</h1>
+<%= link_to('Show',feature_path(@feature.id)) %> |
+<%= link_to('Delete',delete_feature_path(@feature.id)) %>
+<br/><br/>
+<%= form_for(@feature) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Update')%>
+<% end -%>
+
+
+

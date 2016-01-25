@@ -1,0 +1,9 @@
+<%@page_title="New"%>
+<b><%= link_to("<< Back to artists list",artists_path)%></b><br/>
+<h1>New artist</h1>
+<%= form_for(@artist) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Create')%>
+<% end -%>
+

@@ -1,0 +1,8 @@
+<%@page_title="Delete"%>
+<b><%=link_to("<< Back to artists list",artists_path)%></b>
+<h1>Delete Artist</h1>
+<p>Are you sure you want to delete this record permanently ?</p><br/><br/>
+<%=form_for(:artist,:url=>artist_path(@artist.id),:html=>{:method=>:delete}) do %>
+<%=submit_tag("Delete")%>
+<% end %>
+

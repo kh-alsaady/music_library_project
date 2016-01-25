@@ -1,0 +1,15 @@
+  <%=error_messages_for(@customer)%>
+  <table>
+      <tr>
+        <td><%=f.label(:first_name)%></td>
+        <td><%=f.text_field(:first_name)%></td>
+      </tr>
+      <tr>
+        <td><%=f.label(:last_name)%></td>
+        <td><%=f.text_field(:last_name)%></td>
+      </tr>      
+      <tr>
+        <td><%=f.label(:zip_code)%></td>
+        <td><%=f.text_field(:zip_code)%></td>
+      </tr>     
+</table>

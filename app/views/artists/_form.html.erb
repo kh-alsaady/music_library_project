@@ -1,0 +1,16 @@
+  <%=error_messages_for(@artist)%>
+  <table>
+      <tr>
+        <td><%=f.label(:name)%></td>
+        <td><%=f.text_field(:name)%></td>
+      </tr>
+      <tr>
+        <td><%=f.label(:active_year)%></td>
+        <td><%=f.date_select(:active_year,:discard_month=>true,:discard_day=>true,
+          :start_year=>1990,:end_year=>2050)%></td>
+      </tr>  
+      <tr>
+        <td><%=f.label(:biography)%></td>
+        <td><%=f.text_area(:biography,:size=>"50*5")%></td>
+      </tr>    
+</table>

@@ -1,0 +1,28 @@
+<%@page_title="Index"%>
+<%=link_to("<< Back to Customers",customers_path)%><br/><br/>
+
+<%if @orders.count > 0 %>
+  <h3>Orders for <%=link_to(@order.customer.name ,
+                              customer_path(@order.customer.id))%></h3>
+  <table class="table">
+    <tr class="tbl_head_footer">
+      <th>ID</th>
+      <th>Orders</th>
+      <th colspan="2">Actions</th>
+    </tr>
+    <% @orders.each do |order| %>
+        <tr style="background:<%=zebra_style%>">      
+            <td><%=order.id%></td>
+            <td>Order <%=order.invoice_number%></td>  
+            <td><%= link_to 'Show details', order_path(order.id) %></td>
+            <td><%= link_to('Delete', delete_order_path(order.id) ) %></td>
+        </tr>
+    <% end %>
+     <tr class="tbl_head_footer">
+      <td colspan="6"><b>orders count <%=@orders.count%></b></td>
+    </tr>
+  </table>
+<% else %>
+    <div>No orders found.</div>
+<% end %>  
+

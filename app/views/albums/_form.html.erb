@@ -1,0 +1,45 @@
+  <%=error_messages_for(@album)%>
+  <table>
+  <tr>
+    <td><%=f.label(:title)%></td>
+    <td><%=f.text_field(:title)%></td>
+  </tr>
+  <tr>
+    <td><%=f.label(:release_date)%></td>
+    <td><%=f.date_select(:release_date,:order=>[:day,:month,:year])%></td>
+  </tr> 
+  <tr>
+    <td><%=f.label(:price)%></td>
+    <td><%=f.text_field(:price)%></td>
+  </tr>     
+  <tr>
+    <td><%=f.label(:genre)%></td>
+    <td><%=f.text_field(:genre)%></td>
+  </tr>  
+  <tr>
+    <td><%=f.label(:image_path)%></td>
+    <td><%=f.text_field(:image_path)%></td>
+  </tr>  
+  <tr>
+    <td><%=f.label(:artist_id,"Artist")%></td>
+    <td><%=f.select(:artist_id,@artists.map{|artist| [artist.name,artist.id]},
+      :prompt=>true)%></td>
+  </tr>  
+   <tr>
+    <td><%=f.label(:feature_id,"Features : ")%></td>
+    <% if @features.any? %>
+        </tr>
+        <% for feature in @features do %>
+          <tr>
+            <td></td>
+            <td>
+              <%=check_box_tag("feature_list[]",feature.id,
+                @album.features.collect{ |f| f.id }.include?(feature.id))%>
+                <%=feature.name%>
+            </td>
+          </tr>
+        <% end %>
+    <% else %>
+       <td>No features available</td></tr> 
+    <% end %> 
+</table>

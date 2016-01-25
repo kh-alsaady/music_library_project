@@ -1,0 +1,42 @@
+<%@page_title="Index"%>
+<%=link_to("<< Back to Menu",:controller => 'access')%>
+<h1>All artists</h1>
+<%= link_to('New artist', new_artist_path) %><br/><br/>
+<%if @artists.count > 0 %>
+    <table class="table">
+      <tr class="tbl_head_footer">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Active Year</th>
+        <th>Biography</th>   
+        <th>Albums</th>     
+        <th colspan="3">Actions</th>
+      </tr>
+      <% @artists.each do |artist| %>
+          <tr style="background:<%=zebra_style%>">      
+              <td><%=artist.id%></td>
+              <td><%=link_to(artist.name,artist_path(artist.id)) %></td>
+              <td><%=artist.active_year%></td>
+              <td><%=artist.biography%></td>  
+              <td>
+                <%if artist.albums %>
+                  <ul>
+                    <% artist.albums.each do |album| %>
+                      <li><%= link_to(album.title,album_path(album.id))%></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </td>           
+              <td><%= link_to 'Show', artist_path(artist.id) %></td>
+              <td><%= link_to 'Edit', edit_artist_path(artist.id) %></td>
+              <td><%= link_to('Delete', delete_artist_path(artist.id) ) %></td>
+          </tr>
+      <% end %>
+       <tr class="tbl_head_footer">
+        <td colspan="8"><b>Artists count <%=@artists.count%></b></td>
+      </tr>
+    </table>
+<% else %>
+    <div>No artists found.</div>
+<% end %>  
+

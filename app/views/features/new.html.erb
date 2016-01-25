@@ -1,0 +1,9 @@
+<%@page_title="New"%>
+<b><%= link_to("<< Back to features list",features_path)%></b><br/>
+<h1>New Feature</h1>
+<%= form_for(@feature) do |f| %>
+	 <%= render(:partial=>'form',:locals=>{:f=>f}) %>
+	 <br/><br/>
+	 <%=submit_tag('Create')%>
+<% end -%>
+

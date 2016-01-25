@@ -1,0 +1,31 @@
+<%@page_title="Index"%>
+<%=link_to("<< Back to Menu",:controller => 'access')%>
+<h1>All customers</h1>
+<%if @customers.count > 0 %>
+    <table class="table">
+      <tr class="tbl_head_footer">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Zip Code</th>    
+        <th colspan="4">Actions</th>
+      </tr>
+      <% @customers.each do |customer| %>
+          <tr style="background:<%=zebra_style%>">      
+              <td><%=customer.id%></td>
+              <td><%=customer.name%></td>
+              <td><%=customer.zip_code%></td>     
+              <td><%= link_to 'Show', customer_path(customer.id) %></td>
+              <td><%= link_to 'View orders', orders_path(:customer_id => 
+                customer.id) %></td>
+              <td><%= link_to 'Edit', edit_customer_path(customer.id) %></td>
+              <td><%= link_to('Delete', delete_customer_path(customer.id) ) %></td>
+          </tr>
+      <% end %>
+       <tr class="tbl_head_footer">
+        <td colspan="7"><b>customers count <%=@customers.count%></b></td>
+      </tr>
+    </table>
+<% else %>
+    <div>No customers found.</div>
+<% end %>  
+

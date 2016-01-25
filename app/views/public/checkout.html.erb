@@ -1,0 +1,63 @@
+<%@page_title="Checkout"%>
+<h1 align="center">Music Library Store</h1>
+<h2 align='center'>Checkout:</h2>
+<table align="center" class='table'>
+		<tr class="tbl_head_footer">
+		<th>image</th>
+		<th>Album</th>
+		<th>Artist</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		</tr>
+	<% for item in @cart.items do %>
+		<!-- zebra_style method in application helper-->
+		<tr style = "background:<%=zebra_style%>;">
+			<td rowspan="2">
+				<%=image_tag(item.album.image_path,:size=>'50x50',:alt=>'image not found')%>
+			</td>
+			<td>
+				<b><%=item.album.title%></b><br/>
+			</td>
+			<td>
+				<b><%=item.album.artist.name if item.album.artist%></b>
+			</td>
+			<td>
+				<b><%=item.quantity %></b>
+			</td>
+			<td>
+				<%=number_to_currency(item.album.price)%><br/>				
+			</td>			
+		</tr>
+		<tr></tr>
+	<% end %>
+		<tr>
+			<td colspan="4">Total </td>
+			<td><%=number_to_currency(@cart.total_price)%></td>
+		</tr>
+</table>
+
+<div align="center"> <br/><br/>	
+		<%= form_for(:customer,:url=>{:action=>'safe_order'}) do |f| %>
+			<%=error_messages_for(@customer)%>
+			<table align="center" >
+				<tr>
+					<td><%=f.label(:first_name)%></td>
+					<td><%=f.text_field(:first_name)%></td>
+				</tr>
+				<tr>
+					<td><%=f.label(:last_name)%></td>
+					<td><%=f.text_field(:last_name)%></td>
+				</tr>
+				<tr>
+					<td><%=f.label(:zip_code)%></td>
+					<td><%=f.text_field(:zip_code)%></td>
+				</tr>
+				<tr>
+					<td>Credit Card</td>
+					<!-- <td><%= f.label(:credit_card)%></td> -->
+					<td><%= text_field_tag(:credit_card)%></td>
+				</tr>	
+			</table><br/>
+			<div><%= submit_tag("Place Order")%><div/>
+		<% end %>	
+</div>

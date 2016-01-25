@@ -1,0 +1,8 @@
+<%@page_title="Delete"%>
+<b><%=link_to("<< Back to albums list",albums_path)%></b>
+<h1>Delete Album</h1>
+<p>Are you sure you want to delete this record permanently ?</p><br/><br/>
+<%=form_for(:album,:url=>album_path(@album.id),:html=>{:method=>:delete}) do %>
+<%=submit_tag("Delete")%>
+<% end %>
+
